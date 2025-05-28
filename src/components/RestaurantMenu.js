@@ -13,10 +13,7 @@ const RestaurantMenu = () => {
     resInfo?.cards[2]?.card?.card?.info;
 
     const { itemCards } =
-    resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
-
-    console.log(name, cuisines, costForTwoMessage);
-    console.log(resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card);
+    resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card;
 
     return (
         <div className="min-h-screen bg-gray-50">

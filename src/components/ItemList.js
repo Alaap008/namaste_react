@@ -1,14 +1,16 @@
 import { CDN_URL } from "../utils/constants";
 import { addItem } from "../utils/cartSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
 
 
 const ItemList =( itemCards )=>{
     const dispatch = useDispatch();
     const handleAddItem = (item)=>{
         dispatch(addItem(item))
+
     }
-    console.log(itemCards);
+    const location = useLocation();
     return (
                             <div className="divide-y divide-gray-100">
                         {itemCards?.itemCards?.map((item) => (
@@ -27,13 +29,21 @@ const ItemList =( itemCards )=>{
                                             <span className="text-lg font-bold text-orange-600">
                                                 ₹{item.card.info.price / 100 || item.card.info.defaultPrice / 100}
                                             </span>
+
+                                            { !location.pathname.includes('cart') &&
                                             <button className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200 flex items-center" 
                                             onClick={()=> handleAddItem(item)}>
                                                 <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                                                 </svg>
                                                 Add
-                                            </button>
+                                            </button> 
+                                            }
+                                            { location.pathname.includes('cart') &&
+                                            <button className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200 flex items-center" >
+                                               {item.quantity}
+                                            </button> 
+                                            }
                                         </div>
                                     </div>
                                     {item.card.info.imageId && (

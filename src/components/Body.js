@@ -70,7 +70,7 @@ const Body = () =>{
                             <button 
                                 className="bg-white border border-orange-500 text-orange-500 hover:bg-orange-50 px-6 py-3 rounded-lg font-medium transition-colors duration-200 flex items-center"
                                 onClick={() =>{
-                                    setlistOfRestaurants( resList.filter(res => (res.data.avgRating) > 4))
+                                    setlistOfRestaurants( resList.filter(res => (res.data.avgRating) > 4.5))
                                 }}
                             >
                                 <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
